@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres regresar conmigo Luana?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .button.si {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .button.no {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 20px;
+            animation: fall 1s linear infinite;
+        }
+
+        .image {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            animation: fall 2s linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100vh);
+            }
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Quieres regresar conmigo, Luana?</h1>
+        <div class="buttons">
+            <button class="button si" onclick="mostrarMensajeConCorazonesEImagenes()">Sí</button>
+            <button class="button no" onclick="cambiarTamaño()">No</button>
+        </div>
+        <p id="mensaje" class="hidden">Te amo mucho, ambos podemos conseguirlo juntos.</p>
+    </div>
+
+    <script>
+        function mostrarMensajeConCorazonesEImagenes() {
+            document.body.innerHTML = '<h1 style="text-align: center; color: #333;">Te amo mucho, ambos podemos conseguirlo juntos.</h1>';
+            generarCorazones();
+            generarImagenes();
+        }
+
+        function cambiarTamaño() {
+            const siButton = document.querySelector('.button.si');
+            const noButton = document.querySelector('.button.no');
+
+            siButton.style.transform = 'scale(1.5)';
+            noButton.style.transform = 'scale(0.5)';
+
+            setTimeout(() => {
+                noButton.style.transform = 'scale(0.4)';
+                setTimeout(() => {
+                    noButton.style.transform = 'scale(0.3)';
+                    setTimeout(() => {
+                        noButton.style.transform = 'scale(0.2)';
+                        setTimeout(() => {
+                            noButton.style.transform = 'scale(0.1)';
+                        }, 500);
+                    }, 500);
+                }, 500);
+            }, 500);
+        }
+
+        function generarCorazones() {
+            setInterval(() => {
+                const emoji = document.createElement('div');
+                emoji.textContent = '❤️';
+                emoji.className = 'emoji';
+                emoji.style.left = Math.random() * 100 + 'vw';
+                emoji.style.animationDuration = Math.random() * 2 + 3 + 's';
+                document.body.appendChild(emoji);
+
+                setTimeout(() => {
+                    emoji.remove();
+                }, 5000);
+            }, 200);
+        }
+
+        function generarImagenes() {
+            const imagePaths = [
+                'C:/Users/usuario/Downloads/1.jpeg',
+                'C:/Users/usuario/Downloads/2.jpeg',
+                'C:/Users/usuario/Downloads/3.jpeg',
+                'C:/Users/usuario/Downloads/4.jpeg',
+                'C:/Users/usuario/Downloads/5.jpeg',
+                'C:/Users/usuario/Downloads/6.jpeg',
+                'C:/Users/usuario/Downloads/7.jpeg',
+                'C:/Users/usuario/Downloads/8.jpeg'
+            ];
+
+            setInterval(() => {
+                const img = document.createElement('img');
+                img.src = imagePaths[Math.floor(Math.random() * imagePaths.length)];
+                img.className = 'image';
+                img.style.left = Math.random() * 100 + 'vw';
+                img.style.animationDuration = Math.random() * 2 + 3 + 's';
+                document.body.appendChild(img);
+
+                setTimeout(() => {
+                    img.remove();
+                }, 5000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
