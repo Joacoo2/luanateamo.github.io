@@ -1,164 +1,141 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Quieres regresar conmigo Luana?</title>
+    <title>Collage Horizontal</title>
     <style>
         body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
             overflow: hidden;
         }
 
-        .container {
-            text-align: center;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* Menos columnas para aumentar tamaño */
+            grid-auto-rows: 220px; /* Aumenta la altura */
+            gap: 15px; /* Más espacio entre las imágenes */
+            width: 95%;
+            max-width: 1920px;
         }
 
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .button {
-            padding: 15px 30px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 5px;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
-        .button.si {
-            background-color: #4caf50;
-            color: white;
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .button.no {
-            background-color: #f44336;
-            color: white;
-        }
-
-        .hidden {
+        /* Estilo para la sobrepágina */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
             display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            padding: 20px;
         }
 
-        .button:hover {
-            transform: scale(1.1);
+        .overlay img {
+            max-width: 50%;
+            height: 50%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
         }
 
-        .emoji {
-            position: absolute;
-            font-size: 20px;
-            animation: fall 1s linear infinite;
-        }
-
-        .image {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            animation: fall 2s linear infinite;
-        }
-
-        @keyframes fall {
-            from {
-                transform: translateY(-100vh);
-            }
-            to {
-                transform: translateY(100vh);
-            }
+        .overlay p {
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.8;
+            margin: 0 10px;
+            max-width: 80%;
+            word-wrap: break-word;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>¿Quieres regresar conmigo, Luana?</h1>
-        <div class="buttons">
-            <button class="button si" onclick="mostrarMensajeConCorazonesEImagenes()">Sí</button>
-            <button class="button no" onclick="cambiarTamaño()">No</button>
-        </div>
-        <p id="mensaje" class="hidden">Te amo mucho, ambos podemos conseguirlo juntos.</p>
+    <div class="gallery">
+        <img src="./imagenes/1.jpeg" alt="Imagen 1" data-text="Jajaja, esa foto fue después de nuestro primer susto de embarazo, me acuerdo que yo te envié una foto parecida y me dijiste que ni loca, al final lo hicimos, tú estabas asustada y yo un poco nervioso, pero estaba feliz de la idea de ser papá :>.">
+        <img src="./imagenes/2.jpeg" alt="Imagen 2" data-text="Esta fue la foto antes de que me dejes en el terminal, creo que fue la vez donde más tarde salí de Pedregal :,[.">
+        <img src="./imagenes/3.jpeg" alt="Imagen 3" data-text="Esta fue cuando salimos a comer al centro, fue cuando te di el anillo de promesa que más me gustó y fue nuestra primera cita a solas acá en Arequipa...">
+        <img src="./imagenes/4.jpeg" alt="Imagen 4" data-text="Esta foto fue cuando nos echamos en el suelo jajja. Y estabamos con una almohada para que no nos doliera la cabeza.">
+        <img src="./imagenes/5.jpeg" alt="Imagen 5" data-text="Este fue uno de los momentos más memorables, ya que fue nuestro primer viaje juntos, me divertí mucho jaja.">
+        <img src="./imagenes/6.jpeg" alt="Imagen 6" data-text="Esta fotito fue cuando fuiste a la fiesta de la Virgencita que realiza mi familia, es la primera y espero que sea la última vez que presente a mi enamorada a mi familia.">
+        <img src="./imagenes/7.jpeg" alt="Imagen 7" data-text="JAJAJA, yo presumiendo mi anillo de promesa (que yo solito me compré, para hacer juego con el tuyo) >:'T">
+        <img src="./imagenes/8.jpeg" alt="Imagen 8" data-text="Cuando nos pusimos a cuidar a los niños, mientras veían su película jajaj, un estrés horrible :(    ">
+        <img src="./imagenes/9.jpeg" alt="Imagen 9" data-text="SAPA. No me acuerdo cuando fue este día, asi que aprovecharé en decirte que me gustas mucho ;)">
+        <img src="./imagenes/10.jpeg" alt="Imagen 10" data-text="Fue el mismo día que estuve presumiendo mi anillo, ufff ese cuello tan rico?.">
+        <img src="./imagenes/11.jpeg" alt="Imagen 11" data-text="JAJAJA el primer tatuaje que me hice y fue la inicial tuya <3, no me arrepiento.">
+        <img src="./imagenes/12.jpeg" alt="Imagen 12" data-text="Acá nos hiciste una sesión de fotos, dónde no me gusta como salgo yo :(.">
+        <img src="./imagenes/13.jpeg" alt="Imagen 13" data-text="Nuestra fotito en el Starbucks, donde nos hiciste comprar uno para cada uno, tú te pusiste mal del estómago y yo no quería jajaja.">
+        <img src="./imagenes/14.jpeg" alt="Imagen 14" data-text="Esta vez fuimos al parque de las manitos (el pequeño) y luego nos fuimos a la dermatóloga y nos sentamos en la vereda.">
+        <img src="./imagenes/15.jpeg" alt="Imagen 15" data-text="FOOTICO DE NUESTRA PRIMERA CITA EN AREQUIPA CITY JAJAJA.">
+        <img src="./imagenes/16.jpeg" alt="Imagen 16" data-text="Acá una foto de como me tienes de embobado y donde se nota mi cara de mongol.">
+        <img src="./imagenes/17.jpeg" alt="Imagen 12" data-text="AGHHH cuando te estaba sobando tus patitas y me di cuenta que estaban sucias...">
+        <img src="./imagenes/18.jpeg" alt="Imagen 13" data-text="Esta fotito fue en tu sala, yo estaba cansado, agotado, pero tú me hacías sentir bien :).">
+        <img src="./imagenes/19.jpeg" alt="Imagen 14" data-text="JAJAJAJ el momento más XD que pasamos juntos, cuando te 'ROBASTE' todo un pedido del KFC, osea WTF jajajaj, con toda la confianza agarrabas la bandeja.">
+        <img src="./imagenes/20.jpeg" alt="Imagen 15" data-text="Lo que quería decirte es, FELIZ NAVIDAD MI AMOR, espero poder estar a tu lado muchos años más, yo quiero que tú seas mi futuro, y haré lo imposible para que sea realidad, TE AMO MUCHÍSIMO...">
+    </div>
+
+    <!-- Sobrepágina -->
+    <div class="overlay" id="overlay">
+        <img id="overlayImage" src="" alt="Imagen seleccionada">
+        <p id="overlayText"></p>
     </div>
 
     <script>
-        function mostrarMensajeConCorazonesEImagenes() {
-            document.body.innerHTML = '<h1 style="text-align: center; color: #333;">Te amo mucho, ambos podemos conseguirlo juntos.</h1>';
-            generarCorazones();
-            generarImagenes();
+        // Referencias a los elementos de la sobrepágina
+        const overlay = document.getElementById('overlay');
+        const overlayImage = document.getElementById('overlayImage');
+        const overlayText = document.getElementById('overlayText');
+
+        // Añadir evento a cada imagen de la galería
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.addEventListener('click', () => {
+                const src = img.src; // Obtener la ruta de la imagen
+                const text = img.getAttribute('data-text'); // Obtener el texto del atributo data-text
+
+                // Mostrar la imagen y el texto en la sobrepágina
+                overlayImage.src = src;
+                overlayText.textContent = text;
+
+                // Mostrar la sobrepágina
+                overlay.style.display = 'flex';
+            });
+        });
+
+        // Función para cerrar la sobrepágina
+        function closeOverlay() {
+            overlay.style.display = 'none';
         }
 
-        function cambiarTamaño() {
-            const siButton = document.querySelector('.button.si');
-            const noButton = document.querySelector('.button.no');
-
-            siButton.style.transform = 'scale(1.5)';
-            noButton.style.transform = 'scale(0.5)';
-
-            setTimeout(() => {
-                noButton.style.transform = 'scale(0.4)';
-                setTimeout(() => {
-                    noButton.style.transform = 'scale(0.3)';
-                    setTimeout(() => {
-                        noButton.style.transform = 'scale(0.2)';
-                        setTimeout(() => {
-                            noButton.style.transform = 'scale(0.1)';
-                        }, 500);
-                    }, 500);
-                }, 500);
-            }, 500);
-        }
-
-        function generarCorazones() {
-            setInterval(() => {
-                const emoji = document.createElement('div');
-                emoji.textContent = '❤️';
-                emoji.className = 'emoji';
-                emoji.style.left = Math.random() * 100 + 'vw';
-                emoji.style.animationDuration = Math.random() * 2 + 3 + 's';
-                document.body.appendChild(emoji);
-
-                setTimeout(() => {
-                    emoji.remove();
-                }, 5000);
-            }, 200);
-        }
-
-        function generarImagenes() {
-            const imagePaths = [
-                './imagenes/1.jpeg',
-                './imagenes/2.jpeg',
-                './imagenes/3.jpeg',
-                './imagenes/4.jpeg',
-                './imagenes/5.jpeg',
-                './imagenes/6.jpeg',
-                './imagenes/7.jpeg',
-                './imagenes/8.jpeg'
-            ];
-
-            setInterval(() => {
-                const img = document.createElement('img');
-                img.src = imagePaths[Math.floor(Math.random() * imagePaths.length)];
-                img.className = 'image';
-                img.style.left = Math.random() * 100 + 'vw';
-                img.style.animationDuration = Math.random() * 2 + 3 + 's';
-                document.body.appendChild(img);
-
-                setTimeout(() => {
-                    img.remove();
-                }, 5000);
-            }, 300);
-        }
+        // Cerrar la sobrepágina al hacer clic en cualquier lugar vacío
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) {
+                closeOverlay();
+            }
+        });
     </script>
 </body>
 </html>
